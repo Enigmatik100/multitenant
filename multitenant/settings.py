@@ -33,7 +33,6 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 DEBUG = env('DEBUG')
 ENV_NAME = env('ENV_NAME')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -41,32 +40,14 @@ ENV_NAME = env('ENV_NAME')
 SECRET_KEY = 'django-insecure-t*93$=ah(+#+^2lrthe&k6qh7jg@0d$kf!!o4ldr#!0a(=n#-z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
-TENANT_MODEL = 'tenants.Tenant'
 
 SHARED_APPS = (
-    'tenant_schemas',  # mandatory, should always be before any django app
+    'django_tenants',  # mandatory, should always be before any django app
     'tenants',  # you must list the app where your tenant model resides in
 
-    'django.contrib.contenttypes',
-    # everything below here is optional
-
-)
-
-TENANT_APPS = (
-    'django.contrib.contenttypes',
-    # your tenant-specific apps
-    'employee',
-    'demands',
-    'rewards',
-)
-# Application definition
-
-INSTALLED_APPS = [
-    'tenant_schemas',
-    'tenants',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,13 +56,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    "employee",
-    "demands",
-    "rewards",
-]
+    # everything below here is optional
+
+)
+
+TENANT_APPS = (
+    # your tenant-specific apps
+    'demands',
+)
+
+# Application definition
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
+
+TENANT_MODEL = "tenants.Tenant"  # app.Model
+
+TENANT_DOMAIN_MODEL = "tenants.Domain"  # app.Model
 
 MIDDLEWARE = [
-    'tenant_schemas.middleware.TenantMiddleware',
+    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -110,13 +102,18 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    # ...
+)
+
 WSGI_APPLICATION = 'multitenant.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'tenant_schemas.postgresql_backend',
+        'ENGINE': 'django_tenants.postgresql_backend',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASS'),
@@ -130,7 +127,7 @@ DATABASE_ROUTERS setting,so that the correct apps can be synced,
 depending on what’s being synced (shared or tenant).
 """
 DATABASE_ROUTERS = (
-    'tenant_schemas.routers.TenantSyncRouter',
+    'django_tenants.routers.TenantSyncRouter',
 )
 
 # Password validation

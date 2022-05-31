@@ -1,0 +1,13 @@
+[Tue May 31 18:24:16.725466 2022] [wsgi:error] [pid 265853] [client 127.0.0.1:32990] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:24:16.727176 2022] [wsgi:error] [pid 265853] [client 127.0.0.1:32990] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:24:16.862932 2022] [wsgi:error] [pid 265853] [client 127.0.0.1:32990] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py, referer: http://multi.mydev/
+[Tue May 31 18:24:23.327955 2022] [wsgi:error] [pid 265852] [client 127.0.0.1:32992] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:24:31.374916 2022] [wsgi:error] [pid 265854] [client 127.0.0.1:32994] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:25:23.262551 2022] [wsgi:error] [pid 266383] [client 127.0.0.1:32998] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:25:23.890154 2022] [wsgi:error] [pid 266383] [client 127.0.0.1:32998] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:26:21.389431 2022] [wsgi:error] [pid 266820] [client 127.0.0.1:33004] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:26:21.945414 2022] [wsgi:error] [pid 266820] [client 127.0.0.1:33004] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:26:22.161765 2022] [wsgi:error] [pid 266820] [client 127.0.0.1:33004] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:26:22.295096 2022] [wsgi:error] [pid 266820] [client 127.0.0.1:33004] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:31:32.004946 2022] [wsgi:error] [pid 268706] [client 127.0.0.1:33016] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
+[Tue May 31 18:31:32.725733 2022] [wsgi:error] [pid 268706] [client 127.0.0.1:33016] Target WSGI script not found or unable to stat: /home/freddy/www/multitenant/wsgi.py
