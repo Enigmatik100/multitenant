@@ -10,4 +10,7 @@ Procfile
 !**/migrations/__init__.py
 uploads/
 media/
+static/
+access.log
+error.log
 venv/
